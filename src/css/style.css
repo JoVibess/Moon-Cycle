@@ -1,0 +1,317 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto+Mono:wght@400;500&display=swap");
+
+@font-face {
+  font-family: "Gruppo";
+  src: url("../assets/fonts/Gruppo.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MoonWalk";
+  src: url("../assets/fonts/MoonWalk.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-dark: #020307;
+  --bg-footer: #ff8f88;
+  --c-red: #D90416;
+  --text-light: #f5f7ff;
+  --text-muted: #b8c0da;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-shell {
+  width: 100%;
+}
+
+.horizontal-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.horizontal-sticky {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizontal-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.panel {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.horizontal-after-spacer {
+  height: 0;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.panel-moon,
+.panel-phase,
+.panel-tides {
+  background: #000;
+}
+
+.panel-moon::before,
+.panel-phase::before,
+.panel-tides::before {
+  background: none;
+}
+
+.panel-footer {
+  background: linear-gradient(125deg, #ff8f88 5%, #ff6f88 40%, #5f22f7 85%);
+}
+
+.panel-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.panel-title {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+}
+
+.panel-subtitle {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.7vw, 1.25rem);
+}
+
+.panel-footer .panel-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .hero-stage {
+    --hero-core-width: min(76vw, 72rem);
+
+    .hero-core {
+      width: var(--hero-core-width);
+    }
+
+    .hero-title-block {
+        margin-bottom: min(40vw, 456px);
+        margin-right: max(-19vw, -218.5px);
+        .hero-kicker {
+            color: var(--c-red);
+            font-size: clamp(1.25rem, -0.5391rem + 5.7252vw, 3.125rem);
+            font-family: "Gruppo";
+            margin-bottom: -2vw;
+        }
+    }
+    .hero-title-cycle {
+        margin-top: min(40vw, 456px);
+        margin-left: max(-20vw, -230px);
+    }
+    .hero-title {
+        font-size: clamp(3.75rem, -4.398rem + 16.9972vw, 7.5rem);
+        font-family: "MoonWalk";
+        @media(max-width: 767px){
+            font-size: clamp(1.875rem, 0.6705rem + 6.424vw, 3.75rem);
+        }
+    }
+    .hero-moon {
+        width: 50vw;
+        max-width: 570px;
+    }
+    .hero-moon-wrap {
+        width: min(50vw, 570px);
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero-moon-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .hero-data {
+      position: absolute;
+      bottom: 24%;
+      left: calc(50% - (var(--hero-core-width) / 2) + 1.5rem);
+      p {
+        font-family: "Roboto Mono", monospace;
+        font-size: clamp(0.875rem, 0.7557rem + 0.3817vw, 1rem);
+      }
+    }
+    .hero-datetext-center {
+      position: absolute;
+      top: 24%;
+      right: calc(50% - (var(--hero-core-width) / 2) + 1.5rem);
+      font-family: "Roboto Mono", monospace;
+      font-size: clamp(0.875rem, 0.7557rem + 0.3817vw, 1rem);
+    }
+  }
+  
+  .hero-top {
+    z-index: 4;
+    .hero-logo {
+      width: clamp(5.625rem, 3.8359rem + 5.7252vw, 7.5rem);
+    }
+    
+    .hero-menu {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(0.72rem, 0.95vw, 1rem);
+      letter-spacing: 0.03em;
+    }
+  }
+}
+
+
+
+.hero-timeline {
+  position: relative;
+  width: 100%;
+  height: clamp(3.4rem, 9vh, 5.6rem);
+  z-index: 4;
+}
+
+.hero-timeline-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58%;
+  border-top: 1px dashed rgba(240, 240, 240, 0.8);
+}
+
+.hero-timeline-line::after {
+  content: ">";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -54%);
+  color: #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.hero-timeline-today,
+.hero-timeline-full {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-timeline-today {
+  left: 36%;
+}
+
+.hero-timeline-full {
+  left: 53%;
+}
+
+.hero-timeline-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.7rem, 0.95vw, 1.08rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #c9c9c9;
+}
+
+.hero-timeline-full .hero-timeline-label {
+  color: var(--c-red);
+}
+
+.hero-timeline-mark {
+  display: block;
+  width: 2px;
+  height: clamp(1.4rem, 4vh, 3.3rem);
+  margin-top: 0.3rem;
+  background: #f0f0f0;
+}
+
+.hero-timeline-full .hero-timeline-mark {
+  background: var(--c-red);
+}
+
+.hero-timeline-end {
+  position: absolute;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  font-family: "Roboto Mono", monospace;
+  color: #c9c9c9;
+  font-size: clamp(0.8rem, 1.08vw, 1.2rem);
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,11 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon Cycle</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Cycle</title>
 </head>
 <body>
-    
+  <main class="site-shell">
+    <section class="horizontal-wrap" aria-label="Main horizontal sections">
+      <div class="horizontal-sticky">
+        <div class="horizontal-track">
+          <section class="panel panel-moon" id="section-1">
+            <div class="hero-panel container-fluid h-100 px-3 px-md-4 px-lg-5 py-3 py-md-4 d-flex flex-column">
+              <header class="hero-top d-flex justify-content-between align-items-center">
+                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
+                  <a href="#section-2" data-section="1">Creator</a>
+                  <a href="#section-4" data-section="3">Contact</a>
+                </nav>
+              </header>
+
+              <div class="hero-stage position-relative flex-grow-1">
+                <div class="hero-core d-flex justify-content-center align-items-center h-100 mx-auto">
+                  <div class="hero-title-block">
+                    <p class="hero-kicker">THE</p>
+                    <h1 class="hero-title hero-title-main mb-0">MOON</h1>
+                  </div>
+
+                  <div class="hero-moon-wrap">
+                    <canvas class="hero-moon-canvas" aria-label="3D moon"></canvas>
+                  </div>
+
+                  <h1 class="hero-title hero-title-cycle mb-0">CYCLE</h1>
+                </div>
+
+                <p class="hero-datetext-center mb-0">Mar. 3 mars 2026<br>11:48</p>
+
+                <div class="hero-data">
+                  <p class="mb-0">Illumination : 50.8 %</p>
+                  <p class="mb-0">Next full moon : 8 days</p>
+                  <p class="mb-0">Distance to earth : 380 617 km</p>
+                </div>
+              </div>
+
+              <div class="hero-timeline position-relative mb-5" aria-hidden="true">
+                <div class="hero-timeline-line"></div>
+                <div class="hero-timeline-today">
+                  <span class="hero-timeline-label">Today</span>
+                  <span class="hero-timeline-mark"></span>
+                </div>
+                <div class="hero-timeline-full">
+                  <span class="hero-timeline-label">Full moon</span>
+                  <span class="hero-timeline-mark"></span>
+                </div>
+                <span class="hero-timeline-end">29,5 days</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel panel-phase" id="section-2">
+            <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
+              <header class="d-flex justify-content-between align-items-center">
+                <div class="panel-logo">JDX</div>
+                <nav class="small text-uppercase d-flex gap-4">
+                  <a href="#section-1" data-section="0">Back</a>
+                  <a href="#section-3" data-section="2">Next</a>
+                </nav>
+              </header>
+              <div>
+                <h2 class="panel-title">Lunar Phase</h2>
+                <p class="panel-subtitle">Section 2 - Story</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel panel-tides" id="section-3">
+            <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
+              <header class="d-flex justify-content-between align-items-center">
+                <div class="panel-logo">JDX</div>
+                <nav class="small text-uppercase d-flex gap-4">
+                  <a href="#section-2" data-section="1">Back</a>
+                  <a href="#section-4" data-section="3">Footer</a>
+                </nav>
+              </header>
+              <div>
+                <h2 class="panel-title">Tides</h2>
+                <p class="panel-subtitle">Section 3 - Data</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="horizontal-after-spacer" aria-hidden="true"></div>
+    </section>
+
+    <section class="panel panel-footer" id="section-4" aria-label="Footer section">
+      <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
+        <div class="small text-uppercase">Portfolio - LinkedIn - Contact</div>
+        <div>
+          <h2 class="panel-title">JDX</h2>
+          <p class="panel-subtitle mb-0">Section 4 - Footer</p>
+        </div>
+        <div class="small">Copyright JDX - 2026</div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>
