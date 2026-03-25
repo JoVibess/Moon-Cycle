@@ -21,7 +21,7 @@
               </header>
 
               <div class="hero-stage position-relative flex-grow-1">
-                <div class="hero-core d-flex justify-content-center align-items-center h-100 mx-auto">
+                <div class="hero-core d-flex justify-content-center align-items-center h-100 w-100">
                   <div class="hero-title-block">
                     <p class="hero-kicker">THE</p>
                     <h1 class="hero-title hero-title-main mb-0">MOON</h1>
@@ -34,22 +34,25 @@
                   <h1 class="hero-title hero-title-cycle mb-0">CYCLE</h1>
                 </div>
 
-                <p class="hero-datetext-center mb-0">Mar. 3 mars 2026<br>11:48</p>
+                <p class="hero-datetext-center mb-0">
+                  <span data-moon-date></span><br>
+                  <span data-moon-time></span>
+                </p>
 
                 <div class="hero-data">
-                  <p class="mb-0">Illumination : 50.8 %</p>
-                  <p class="mb-0">Next full moon : 8 days</p>
-                  <p class="mb-0">Distance to earth : 380 617 km</p>
+                  <p class="mb-0">Illumination : <span data-moon-illumination></span></p>
+                  <p class="mb-0">Next full moon : <span data-moon-next-full></span></p>
+                  <p class="mb-0">Distance to earth : <span data-moon-distance></span></p>
                 </div>
               </div>
 
               <div class="hero-timeline position-relative mb-5" aria-hidden="true">
                 <div class="hero-timeline-line"></div>
-                <div class="hero-timeline-today">
+                <div class="hero-timeline-today" data-timeline-today>
                   <span class="hero-timeline-label">Today</span>
                   <span class="hero-timeline-mark"></span>
                 </div>
-                <div class="hero-timeline-full">
+                <div class="hero-timeline-full" data-timeline-full>
                   <span class="hero-timeline-label">Full moon</span>
                   <span class="hero-timeline-mark"></span>
                 </div>
@@ -61,7 +64,7 @@
           <section class="panel panel-phase" id="section-2">
             <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
               <header class="d-flex justify-content-between align-items-center">
-                <div class="panel-logo">JDX</div>
+                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
                 <nav class="small text-uppercase d-flex gap-4">
                   <a href="#section-1" data-section="0">Back</a>
                   <a href="#section-3" data-section="2">Next</a>

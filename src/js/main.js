@@ -3,9 +3,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import SunCalc from "suncalc";
+import { initHeroMoonData } from "./features/heroMoonData.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Scroll horizontal : convertit le scroll vertical en déplacement horizontal du track
 const wrap = document.querySelector(".horizontal-wrap");
 const track = document.querySelector(".horizontal-track");
 const spacer = document.querySelector(".horizontal-after-spacer");
@@ -48,6 +51,7 @@ if (wrap && track && spacer && panels.length > 1) {
   ScrollTrigger.refresh();
 }
 
+// Scène Three.js : rendu 3D du modèle lunaire
 const moonCanvas = document.querySelector(".hero-moon-canvas");
 const moonContainer = document.querySelector(".hero-moon-wrap");
 
@@ -57,8 +61,16 @@ if (moonCanvas && moonContainer) {
   camera.position.set(0, 0, 3.2);
   scene.add(camera);
 
-  const light = new THREE.DirectionalLight(0xffffff, 2.2);
-  light.position.set(3.5, 2.2, 4.5);
+  // Lumière ambiante très faible pour rendre le côté sombre légèrement visible
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.08);
+  scene.add(ambientLight);
+
+  // Lumière directionnelle positionnée selon la phase lunaire du jour (SunCalc)
+  // angle = (0.5 - phase) * 2π : phase 0 → lumière derrière, phase 0.5 → lumière face caméra
+  const light = new THREE.DirectionalLight(0xffffff, 6);
+  const moonPhase = SunCalc.getMoonIllumination(new Date()).phase;
+  const lightAngle = (0.5 - moonPhase) * 2 * Math.PI;
+  light.position.set(Math.sin(lightAngle) * 5, 0, Math.cos(lightAngle) * 5);
   scene.add(light);
 
   const renderer = new THREE.WebGLRenderer({
@@ -75,6 +87,7 @@ if (moonCanvas && moonContainer) {
 
   let moonModel = null;
 
+  // Centre et redimensionne le modèle GLB pour qu'il remplisse le canvas
   const fitMoonModel = () => {
     if (!moonModel) {
       return;
@@ -120,6 +133,7 @@ if (moonCanvas && moonContainer) {
   window.addEventListener("resize", resizeMoon);
   resizeMoon();
 
+  // Boucle de rendu : rotation lente de la lune sur l'axe Y
   const tick = () => {
     if (moonModel) {
       moonModel.rotation.y += 0.0025;
@@ -129,3 +143,6 @@ if (moonCanvas && moonContainer) {
   };
   tick();
 }
+
+// Récupère les données lunaires depuis l'API et met à jour le DOM
+initHeroMoonData();

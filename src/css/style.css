@@ -112,12 +112,6 @@ a:hover {
   background: linear-gradient(125deg, #ff8f88 5%, #ff6f88 40%, #5f22f7 85%);
 }
 
-.panel-logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
 .panel-title {
   margin: 0;
   text-transform: uppercase;
@@ -204,9 +198,6 @@ a:hover {
   
   .hero-top {
     z-index: 4;
-    .hero-logo {
-      width: clamp(5.625rem, 3.8359rem + 5.7252vw, 7.5rem);
-    }
     
     .hero-menu {
       font-family: "Montserrat", sans-serif;
@@ -216,6 +207,9 @@ a:hover {
   }
 }
 
+.hero-logo {
+  width: clamp(5.625rem, 3.8359rem + 5.7252vw, 7.5rem);
+}
 
 
 .hero-timeline {
@@ -254,11 +248,11 @@ a:hover {
 }
 
 .hero-timeline-today {
-  left: 36%;
+  left: 36%; /* overridden dynamically by JS */
 }
 
 .hero-timeline-full {
-  left: 53%;
+  left: 50%; /* overridden dynamically by JS */
 }
 
 .hero-timeline-label {
