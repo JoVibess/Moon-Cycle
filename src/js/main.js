@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import SunCalc from "suncalc";
 import { initHeroMoonData } from "./features/heroMoonData.js";
+import { initFooterLiquidGradient } from "./features/footerLiquidGradient.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -146,3 +147,4 @@ if (moonCanvas && moonContainer) {
 
 // Récupère les données lunaires depuis l'API et met à jour le DOM
 initHeroMoonData();
+initFooterLiquidGradient();

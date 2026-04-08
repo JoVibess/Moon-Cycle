@@ -15,8 +15,8 @@
               <header class="hero-top d-flex justify-content-between align-items-center">
                 <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
                 <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
-                  <a href="#section-2" data-section="1">Creator</a>
-                  <a href="#section-4" data-section="3">Contact</a>
+                  <a href="#">Creator</a>
+                  <a href="#">Contact</a>
                 </nav>
               </header>
 
@@ -62,34 +62,99 @@
           </section>
 
           <section class="panel panel-phase" id="section-2">
-            <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
-              <header class="d-flex justify-content-between align-items-center">
+            <div class="container-fluid h-100 d-flex flex-column py-4 px-4 px-md-5">
+
+              <header class="phase-header d-flex justify-content-between align-items-center">
                 <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
-                <nav class="small text-uppercase d-flex gap-4">
-                  <a href="#section-1" data-section="0">Back</a>
-                  <a href="#section-3" data-section="2">Next</a>
+                <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
+                  <a href="#">Creator</a>
+                  <a href="#">Contact</a>
                 </nav>
               </header>
-              <div>
-                <h2 class="panel-title">Lunar Phase</h2>
-                <p class="panel-subtitle">Section 2 - Story</p>
+
+              <div class="phase-body-wrap d-flex align-items-center flex-grow-1 gap-4 gap-lg-5">
+
+                <div class="phase-left d-flex flex-column justify-content-center">
+                  <div class="phase-title-wrap">
+                    <h2 class="phase-title">Lunar Phase</h2>
+                    <div class="phase-line">
+                      <div class="line"></div>
+                      <img src="./assets/images/star.svg" alt="" class="phase-title-star">
+                    </div>
+                  </div>
+                  <p class="phase-desc">
+                    The lunar phases are the different appearances of the Moon as
+                    seen from Earth over a cycle of approximately 29.5 days. They
+                    are caused by the relative positions of the Moon, Earth, and
+                    the Sun. The Moon does not change shape; only the portion
+                    illuminated by the Sun and visible from Earth varies, moving
+                    from the new moon to the full moon, then gradually returning
+                    to darkness.
+                  </p>
+                  <div class="phase-pagination" aria-label="Section 2 of 4">
+                    <button class="phase-pagination-prev" data-panel="0" aria-label="Section précédente"><img src="./assets/images/chevron.svg" alt=""></button>
+                    <span class="phase-pagination-sep">|</span>
+                    <button class="phase-pagination-next" data-panel="2" aria-label="Section suivante"><img src="./assets/images/chevron.svg" alt=""></button>
+                  </div>
+                </div>
+
+                <div class="phase-right d-flex align-items-center justify-content-center">
+                  <div class="phase-visual" aria-label="Lunar phase illustration placeholder"></div>
+                </div>
+
               </div>
+
             </div>
           </section>
 
           <section class="panel panel-tides" id="section-3">
-            <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
-              <header class="d-flex justify-content-between align-items-center">
-                <div class="panel-logo">JDX</div>
-                <nav class="small text-uppercase d-flex gap-4">
-                  <a href="#section-2" data-section="1">Back</a>
-                  <a href="#section-4" data-section="3">Footer</a>
+            <div class="container-fluid h-100 d-flex flex-column py-4 px-4 px-md-5">
+
+              <header class="phase-header d-flex justify-content-between align-items-center">
+                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
+                  <a href="#">Creator</a>
+                  <a href="#">Contact</a>
                 </nav>
               </header>
-              <div>
-                <h2 class="panel-title">Tides</h2>
-                <p class="panel-subtitle">Section 3 - Data</p>
+
+              <div class="phase-body-wrap d-flex align-items-center flex-grow-1 gap-4 gap-lg-5">
+
+                <div class="phase-left d-flex flex-column justify-content-center">
+                  <div class="phase-title-wrap">
+                    <h2 class="phase-title">Tides</h2>
+                    <div class="phase-line">
+                      <div class="line"></div>
+                      <img src="./assets/images/star.svg" alt="" class="phase-title-star">
+                    </div>
+                  </div>
+                  <p class="phase-desc">
+                    Tides are the periodic rise and fall of ocean levels caused primarily by
+                    the gravitational pull of the Moon, and to a lesser extent by the Sun.
+                    The Moon's gravity draws ocean water toward it, creating a bulge on
+                    the side of Earth facing the Moon. A second bulge forms on the
+                    opposite side due to the dynamics of the Earth–Moon system.
+                  </p>
+                  <p class="phase-desc">
+                    As Earth rotates, coastal regions move through these areas of higher
+                    and lower water levels, typically experiencing two high tides and two
+                    low tides each day. The intensity of tides varies depending on the
+                    alignment of the Sun, Earth, and Moon, becoming stronger during full
+                    and new moons.
+                  </p>
+                  <div class="phase-pagination" aria-label="Section 3 of 4">
+                    <button class="phase-pagination-prev" data-panel="1" aria-label="Section précédente"><img src="./assets/images/chevron.svg" alt=""></button>
+                    <span class="phase-pagination-sep">|</span>
+                    <button class="phase-pagination-next" data-panel="footer" aria-label="Section suivante"><img src="./assets/images/chevron.svg" alt=""></button>
+                  </div>
+                </div>
+
+                <div class="phase-right d-flex align-items-center justify-content-center">
+                  <div class="phase-visual" aria-label="Tides illustration placeholder"></div>
+                </div>
+
               </div>
+
             </div>
           </section>
         </div>
@@ -98,7 +163,8 @@
     </section>
 
     <section class="panel panel-footer" id="section-4" aria-label="Footer section">
-      <div class="container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
+      <canvas class="footer-liquid-canvas" aria-hidden="true"></canvas>
+      <div class="panel-footer-content container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
         <div class="small text-uppercase">Portfolio - LinkedIn - Contact</div>
         <div>
           <h2 class="panel-title">JDX</h2>
@@ -110,5 +176,6 @@
   </main>
 
   <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/utils/littleAnimation.js"></script>
 </body>
 </html>
