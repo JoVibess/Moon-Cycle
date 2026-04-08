@@ -33,4 +33,8 @@ const scrollToPanel = (target) => {
   document.querySelectorAll(".phase-pagination-prev, .phase-pagination-next").forEach((btn) => {
     btn.addEventListener("click", () => scrollToPanel(btn.dataset.panel));
   });
+
+  document.querySelector(".footer-arrow")?.addEventListener("click", () => {
+    scrollToPanel("2");
+  });
   

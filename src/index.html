@@ -164,13 +164,39 @@
 
     <section class="panel panel-footer" id="section-4" aria-label="Footer section">
       <canvas class="footer-liquid-canvas" aria-hidden="true"></canvas>
-      <div class="panel-footer-content container-fluid h-100 d-flex flex-column justify-content-between py-4 px-4 px-md-5">
-        <div class="small text-uppercase">Portfolio - LinkedIn - Contact</div>
-        <div>
-          <h2 class="panel-title">JDX</h2>
-          <p class="panel-subtitle mb-0">Section 4 - Footer</p>
+      <div class="panel-footer-content container-fluid h-100 py-4 px-4 px-md-5 py-md-5">
+        <div class="footer-shell h-100 d-flex flex-column">
+          <button type="button" class="footer-arrow" aria-label="Retour à la section précédente">↑</button>
+
+          <div class="footer-top d-flex justify-content-between align-items-start">
+            <nav class="footer-links d-flex flex-column" aria-label="Footer links">
+              <a href="#">Portfolio</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">Contact</a>
+            </nav>
+
+            <div class="footer-signature ms-auto">
+              <div class="footer-signature-line" aria-hidden="true"></div>
+              <p class="footer-signature-kicker mb-0">Created by</p>
+              <p class="footer-signature-name mb-0">JOEY DECROIX</p>
+              <div class="footer-signature-line footer-signature-line-bottom" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="footer-brand-wrap flex-grow-1 d-flex align-items-end justify-content-center">
+            <img src="./assets/images/logo.png" alt="JDX logo" class="footer-brand-logo">
+          </div>
+
+          <div class="footer-meta-wrap mt-auto">
+            <div class="footer-meta-line" aria-hidden="true"></div>
+            <div class="footer-meta d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+              <span>Copyright©JDX-2026</span>
+              <span>Haute-Savoie, France</span>
+              <span>07:24:12 AM</span>
+            </div>
+            <div class="footer-meta-line footer-meta-line-bottom" aria-hidden="true"></div>
+          </div>
         </div>
-        <div class="small">Copyright JDX - 2026</div>
       </div>
     </section>
   </main>
