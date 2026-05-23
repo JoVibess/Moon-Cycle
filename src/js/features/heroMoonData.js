@@ -1,28 +1,46 @@
 import SunCalc from "suncalc";
-import {
-  fetchAstronomyByLocation,
-  getAstronomyApiKey,
-} from "../services/ipGeolocationAstronomy.js";
+import { fetchAstronomyByLocation } from "../services/ipGeolocationAstronomy.js";
 
 function getUserTimeZone() {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
 
-// Traduction des 8 phases lunaires en français
-const PHASE_LABELS_FR = {
-  NEW_MOON: "Nouvelle lune",
-  WAXING_CRESCENT: "Premier croissant",
-  FIRST_QUARTER: "Premier quartier",
-  WAXING_GIBBOUS: "Gibbeuse croissante",
-  FULL_MOON: "Pleine lune",
-  WANING_GIBBOUS: "Gibbeuse décroissante",
-  LAST_QUARTER: "Dernier quartier",
-  WANING_CRESCENT: "Dernier croissant",
+const MOON_PHASE_LABELS = {
+  en: {
+    NEW_MOON: "New moon",
+    WAXING_CRESCENT: "Waxing crescent",
+    FIRST_QUARTER: "First quarter",
+    WAXING_GIBBOUS: "Waxing gibbous",
+    FULL_MOON: "Full moon",
+    WANING_GIBBOUS: "Waning gibbous",
+    LAST_QUARTER: "Last quarter",
+    WANING_CRESCENT: "Waning crescent",
+  },
+  fr: {
+    NEW_MOON: "Nouvelle lune",
+    WAXING_CRESCENT: "Premier croissant",
+    FIRST_QUARTER: "Premier quartier",
+    WAXING_GIBBOUS: "Gibbeuse croissante",
+    FULL_MOON: "Pleine lune",
+    WANING_GIBBOUS: "Gibbeuse décroissante",
+    LAST_QUARTER: "Dernier quartier",
+    WANING_CRESCENT: "Dernier croissant",
+  },
 };
 
-function formatPhaseName(phase) {
+const LOCALES = {
+  en: "en-US",
+  fr: "fr-FR",
+};
+
+const DAY_UNITS = {
+  en: "days",
+  fr: "jours",
+};
+
+function formatPhaseName(phase, language) {
   if (!phase) return "—";
-  return PHASE_LABELS_FR[phase.toUpperCase()] ?? phase;
+  return MOON_PHASE_LABELS[language]?.[phase.toUpperCase()] ?? phase;
 }
 
 // Cherche la prochaine pleine lune par pas de 6h sur 35 jours (SunCalc, phase ≈ 0.5)
@@ -52,7 +70,8 @@ function getDaysUntil(targetDate, referenceDate) {
 }
 
 // Normalise la réponse brute de l'API en données prêtes pour le DOM
-function normalizeAstronomyData(apiData, locale, timeZone) {
+function normalizeAstronomyData(apiData, language, timeZone) {
+  const locale = LOCALES[language] || LOCALES.en;
   const astronomy = apiData.astronomy ?? apiData;
   const currentTime = astronomy.current_time?.slice(0, 5) ?? "--:--";
   const referenceDate = astronomy.date
@@ -77,9 +96,9 @@ function normalizeAstronomyData(apiData, locale, timeZone) {
     illuminationLabel: `${illumination.toFixed(1)} %`,
     distanceLabel: `${Math.round(distance).toLocaleString(locale)} km`,
     nextFullMoonLabel: nextFullMoon
-      ? `${getDaysUntil(nextFullMoon, referenceDate)} days`
+      ? `${getDaysUntil(nextFullMoon, referenceDate)} ${DAY_UNITS[language] || DAY_UNITS.en}`
       : "--",
-    phaseLabel: formatPhaseName(astronomy.moon_phase),
+    phaseLabel: formatPhaseName(astronomy.moon_phase, language),
     todayPercent: phase * 100,
   };
 }
@@ -109,13 +128,7 @@ function updateMoonHeroDom(data) {
   if (fullEl) fullEl.style.left = "50%";
 }
 
-export async function initHeroMoonData() {
-  if (!getAstronomyApiKey()) {
-    console.warn("Missing VITE_IPGEOLOCATION_API_KEY. Moon data remains static.");
-    return;
-  }
-
-  const locale = navigator.language || "en-US";
+export async function initHeroMoonData(language = "en") {
   const timeZone = getUserTimeZone();
 
   try {
@@ -124,7 +137,7 @@ export async function initHeroMoonData() {
       console.warn("Astronomy API returned an unexpected payload:", apiData);
       return;
     }
-    const normalized = normalizeAstronomyData(apiData, locale, timeZone);
+    const normalized = normalizeAstronomyData(apiData, language, timeZone);
     updateMoonHeroDom(normalized);
   } catch (error) {
     console.error("Unable to load moon data:", error);

@@ -3,35 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moon Cycle</title>
+  <title>Moon Cycle | Live Lunar Phase, Moon Distance and Tides</title>
+  <meta name="description" content="Explore the current moon phase, lunar illumination, distance from Earth, upcoming full moon and the influence of the Moon on ocean tides.">
+  <link rel="canonical" href="https://mooncycle.local/">
+  <link rel="alternate" hreflang="en" href="https://mooncycle.local/en">
+  <link rel="alternate" hreflang="fr" href="https://mooncycle.local/fr">
+  <link rel="alternate" hreflang="x-default" href="https://mooncycle.local/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moon Cycle | Live Lunar Phase, Moon Distance and Tides">
+  <meta property="og:description" content="Explore the current moon phase, lunar illumination, distance from Earth, upcoming full moon and the influence of the Moon on ocean tides.">
+  <meta property="og:url" content="https://mooncycle.local/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Moon Cycle | Live Lunar Phase, Moon Distance and Tides">
+  <meta name="twitter:description" content="Explore the current moon phase, lunar illumination, distance from Earth, upcoming full moon and the influence of the Moon on ocean tides.">
 </head>
 <body>
+  <div class="site-cursor" aria-hidden="true" data-site-cursor>
+    <span class="site-cursor__dot"></span>
+  </div>
+
   <main class="site-shell">
-    <section class="horizontal-wrap" aria-label="Main horizontal sections">
+    <section class="horizontal-wrap" aria-label="Main horizontal sections" data-i18n-aria-label="sections.mainLabel">
       <div class="horizontal-sticky">
         <div class="horizontal-track">
           <section class="panel panel-moon" id="section-1">
             <div class="hero-panel container-fluid h-100 px-3 px-md-4 px-lg-5 py-3 py-md-4 d-flex flex-column">
               <header class="hero-top d-flex justify-content-between align-items-center">
-                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                <a href="https://joeydecroix.com" aria-label="Joey Decroix">
+                  <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                </a>
                 <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
-                  <a href="#">Creator</a>
-                  <a href="#">Contact</a>
+                  <a href="/fr" hreflang="fr" class="language-switch" data-language-switch data-i18n="nav.languageSwitch" data-i18n-aria-label="nav.languageSwitchLabel">EN / FR</a>
+                  <a href="https://joeydecroix.com" class="header-link" data-i18n="nav.creator">Creator</a>
+                  <a href="mailto:joeydecroix.pro@gmail.com" class="header-link" data-i18n="nav.contact">Contact</a>
                 </nav>
               </header>
 
               <div class="hero-stage position-relative flex-grow-1">
                 <div class="hero-core d-flex justify-content-center align-items-center h-100 w-100">
                   <div class="hero-title-block">
-                    <p class="hero-kicker">THE</p>
-                    <h1 class="hero-title hero-title-main mb-0">MOON</h1>
+                    <p class="hero-kicker" data-i18n="hero.kicker">THE</p>
+                    <h1 class="hero-title hero-title-main mb-0" data-i18n="hero.titleMain">MOON</h1>
                   </div>
 
                   <div class="hero-moon-wrap">
-                    <canvas class="hero-moon-canvas" aria-label="3D moon"></canvas>
+                    <canvas class="hero-moon-canvas" aria-label="3D moon" data-i18n-aria-label="hero.moonCanvasLabel"></canvas>
                   </div>
 
-                  <h1 class="hero-title hero-title-cycle mb-0">CYCLE</h1>
+                  <h1 class="hero-title hero-title-cycle mb-0" data-i18n="hero.titleCycle">CYCLE</h1>
                 </div>
 
                 <p class="hero-datetext-center mb-0">
@@ -40,23 +60,23 @@
                 </p>
 
                 <div class="hero-data">
-                  <p class="mb-0">Illumination : <span data-moon-illumination></span></p>
-                  <p class="mb-0">Next full moon : <span data-moon-next-full></span></p>
-                  <p class="mb-0">Distance to earth : <span data-moon-distance></span></p>
+                  <p class="mb-0"><span data-i18n="hero.illumination">Illumination</span> : <span data-moon-illumination></span></p>
+                  <p class="mb-0"><span data-i18n="hero.nextFullMoon">Next full moon</span> : <span data-moon-next-full></span></p>
+                  <p class="mb-0"><span data-i18n="hero.distanceToEarth">Distance to earth</span> : <span data-moon-distance></span></p>
                 </div>
               </div>
 
               <div class="hero-timeline position-relative mb-5" aria-hidden="true">
                 <div class="hero-timeline-line"></div>
                 <div class="hero-timeline-today" data-timeline-today>
-                  <span class="hero-timeline-label">Today</span>
+                  <span class="hero-timeline-label" data-i18n="hero.today">Today</span>
                   <span class="hero-timeline-mark"></span>
                 </div>
                 <div class="hero-timeline-full" data-timeline-full>
-                  <span class="hero-timeline-label">Full moon</span>
+                  <span class="hero-timeline-label" data-i18n="hero.fullMoon">Full moon</span>
                   <span class="hero-timeline-mark"></span>
                 </div>
-                <span class="hero-timeline-end">29,5 days</span>
+                <span class="hero-timeline-end" data-i18n="hero.cycleLength">29.5 days</span>
               </div>
             </div>
           </section>
@@ -65,10 +85,13 @@
             <div class="container-fluid h-100 d-flex flex-column py-4 px-4 px-md-5">
 
               <header class="phase-header d-flex justify-content-between align-items-center">
-                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                <a href="https://joeydecroix.com" aria-label="Joey Decroix">
+                  <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                </a>
                 <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
-                  <a href="#">Creator</a>
-                  <a href="#">Contact</a>
+                  <a href="/fr" hreflang="fr" class="language-switch" data-language-switch data-i18n="nav.languageSwitch" data-i18n-aria-label="nav.languageSwitchLabel">EN / FR</a>
+                  <a href="https://joeydecroix.com" class="header-link" data-i18n="nav.creator">Creator</a>
+                  <a href="mailto:joeydecroix.pro@gmail.com" class="header-link" data-i18n="nav.contact">Contact</a>
                 </nav>
               </header>
 
@@ -76,30 +99,37 @@
 
                 <div class="phase-left d-flex flex-column justify-content-center">
                   <div class="phase-title-wrap">
-                    <h2 class="phase-title">Lunar Phase</h2>
+                    <h2 class="phase-title" data-i18n="sections.lunarTitle">Lunar Phase</h2>
                     <div class="phase-line">
                       <div class="line"></div>
                       <img src="./assets/images/star.svg" alt="" class="phase-title-star">
                     </div>
                   </div>
-                  <p class="phase-desc">
-                    The lunar phases are the different appearances of the Moon as
-                    seen from Earth over a cycle of approximately 29.5 days. They
-                    are caused by the relative positions of the Moon, Earth, and
-                    the Sun. The Moon does not change shape; only the portion
-                    illuminated by the Sun and visible from Earth varies, moving
-                    from the new moon to the full moon, then gradually returning
-                    to darkness.
+                  <p class="phase-desc" data-i18n="sections.lunarDescription">
+                    The lunar phases are the different appearances of the Moon as seen from Earth over a cycle of approximately 29.5 days. They are caused by the relative positions of the Moon, Earth, and the Sun. The Moon does not change shape; only the portion illuminated by the Sun and visible from Earth varies, moving from the new moon to the full moon, then gradually returning to darkness.
                   </p>
-                  <div class="phase-pagination" aria-label="Section 2 of 4">
-                    <button class="phase-pagination-prev" data-panel="0" aria-label="Section précédente"><img src="./assets/images/chevron.svg" alt=""></button>
+                  <div class="phase-pagination" aria-label="Section 2 of 4" data-i18n-aria-label="sections.paginationTwo">
+                    <button class="phase-pagination-prev" data-panel="0" aria-label="Previous section" data-i18n-aria-label="sections.previousSection"><img src="./assets/images/chevron.svg" alt=""></button>
                     <span class="phase-pagination-sep">|</span>
-                    <button class="phase-pagination-next" data-panel="2" aria-label="Section suivante"><img src="./assets/images/chevron.svg" alt=""></button>
+                    <button class="phase-pagination-next" data-panel="2" aria-label="Next section" data-i18n-aria-label="sections.nextSection"><img src="./assets/images/chevron.svg" alt=""></button>
                   </div>
                 </div>
 
                 <div class="phase-right d-flex align-items-center justify-content-center">
-                  <div class="phase-visual" aria-label="Lunar phase illustration placeholder"></div>
+                  <div class="phase-visual phase-visual--cycle" aria-label="Lunar phase illustration placeholder" data-i18n-aria-label="sections.lunarVisualLabel">
+                    <div class="moon-cycle-diagram" aria-hidden="true">
+                      <div class="moon-cycle-diagram__orbit"></div>
+                      <img src="./assets/images/boucle.svg" alt="" class="moon-cycle-diagram__center">
+                      <img src="./assets/images/moon-1.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--1">
+                      <img src="./assets/images/moon-2.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--2">
+                      <img src="./assets/images/moon-3.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--3">
+                      <img src="./assets/images/moon-4.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--4">
+                      <img src="./assets/images/moon-5.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--5">
+                      <img src="./assets/images/moon-6.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--6">
+                      <img src="./assets/images/moon-7.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--7">
+                      <img src="./assets/images/moon-8.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--8">
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -111,10 +141,13 @@
             <div class="container-fluid h-100 d-flex flex-column py-4 px-4 px-md-5">
 
               <header class="phase-header d-flex justify-content-between align-items-center">
-                <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                <a href="https://joeydecroix.com" aria-label="Joey Decroix">
+                  <img src="./assets/images/logo.png" alt="Moon Cycle logo" class="hero-logo">
+                </a>
                 <nav class="hero-menu d-flex gap-3 gap-md-4 fw-semibold text-uppercase">
-                  <a href="#">Creator</a>
-                  <a href="#">Contact</a>
+                  <a href="/fr" hreflang="fr" class="language-switch" data-language-switch data-i18n="nav.languageSwitch" data-i18n-aria-label="nav.languageSwitchLabel">EN / FR</a>
+                  <a href="https://joeydecroix.com" class="header-link" data-i18n="nav.creator">Creator</a>
+                  <a href="mailto:joeydecroix.pro@gmail.com" class="header-link" data-i18n="nav.contact">Contact</a>
                 </nav>
               </header>
 
@@ -122,35 +155,29 @@
 
                 <div class="phase-left d-flex flex-column justify-content-center">
                   <div class="phase-title-wrap">
-                    <h2 class="phase-title">Tides</h2>
+                    <h2 class="phase-title" data-i18n="sections.tidesTitle">Tides</h2>
                     <div class="phase-line">
                       <div class="line"></div>
                       <img src="./assets/images/star.svg" alt="" class="phase-title-star">
                     </div>
                   </div>
-                  <p class="phase-desc">
-                    Tides are the periodic rise and fall of ocean levels caused primarily by
-                    the gravitational pull of the Moon, and to a lesser extent by the Sun.
-                    The Moon's gravity draws ocean water toward it, creating a bulge on
-                    the side of Earth facing the Moon. A second bulge forms on the
-                    opposite side due to the dynamics of the Earth–Moon system.
+                  <p class="phase-desc" data-i18n="sections.tidesDescriptionOne">
+                    Tides are the periodic rise and fall of ocean levels caused primarily by the gravitational pull of the Moon, and to a lesser extent by the Sun. The Moon's gravity draws ocean water toward it, creating a bulge on the side of Earth facing the Moon. A second bulge forms on the opposite side due to the dynamics of the Earth-Moon system.
                   </p>
-                  <p class="phase-desc">
-                    As Earth rotates, coastal regions move through these areas of higher
-                    and lower water levels, typically experiencing two high tides and two
-                    low tides each day. The intensity of tides varies depending on the
-                    alignment of the Sun, Earth, and Moon, becoming stronger during full
-                    and new moons.
+                  <p class="phase-desc" data-i18n="sections.tidesDescriptionTwo">
+                    As Earth rotates, coastal regions move through these areas of higher and lower water levels, typically experiencing two high tides and two low tides each day. The intensity of tides varies depending on the alignment of the Sun, Earth, and Moon, becoming stronger during full and new moons.
                   </p>
-                  <div class="phase-pagination" aria-label="Section 3 of 4">
-                    <button class="phase-pagination-prev" data-panel="1" aria-label="Section précédente"><img src="./assets/images/chevron.svg" alt=""></button>
+                  <div class="phase-pagination" aria-label="Section 3 of 4" data-i18n-aria-label="sections.paginationThree">
+                    <button class="phase-pagination-prev" data-panel="1" aria-label="Previous section" data-i18n-aria-label="sections.previousSection"><img src="./assets/images/chevron.svg" alt=""></button>
                     <span class="phase-pagination-sep">|</span>
-                    <button class="phase-pagination-next" data-panel="footer" aria-label="Section suivante"><img src="./assets/images/chevron.svg" alt=""></button>
+                    <button class="phase-pagination-next" data-panel="footer" aria-label="Next section" data-i18n-aria-label="sections.nextSection"><img src="./assets/images/chevron.svg" alt=""></button>
                   </div>
                 </div>
 
                 <div class="phase-right d-flex align-items-center justify-content-center">
-                  <div class="phase-visual" aria-label="Tides illustration placeholder"></div>
+                  <div class="phase-visual phase-visual--tides" aria-label="Tides illustration placeholder" data-i18n-aria-label="sections.tidesVisualLabel">
+                    <img src="./assets/images/mooCycle_marrees.png" alt="">
+                  </div>
                 </div>
 
               </div>
@@ -162,22 +189,22 @@
       <div class="horizontal-after-spacer" aria-hidden="true"></div>
     </section>
 
-    <section class="panel panel-footer" id="section-4" aria-label="Footer section">
+    <section class="panel panel-footer" id="section-4" aria-label="Footer section" data-i18n-aria-label="footer.sectionLabel">
       <canvas class="footer-liquid-canvas" aria-hidden="true"></canvas>
       <div class="panel-footer-content container-fluid h-100 py-4 px-4 px-md-5 py-md-5">
         <div class="footer-shell h-100 d-flex flex-column">
-          <button type="button" class="footer-arrow" aria-label="Retour à la section précédente">↑</button>
+          <button type="button" class="footer-arrow" aria-label="Back to the previous section" data-i18n-aria-label="footer.previousSection">↑</button>
 
           <div class="footer-top d-flex justify-content-between align-items-start">
-            <nav class="footer-links d-flex flex-column" aria-label="Footer links">
-              <a href="#">Portfolio</a>
-              <a href="#">LinkedIn</a>
-              <a href="#">Contact</a>
+            <nav class="footer-links d-flex flex-column" aria-label="Footer links" data-i18n-aria-label="footer.linksLabel">
+              <a href="https://joeydecroix.com" data-i18n="footer.portfolio">Portfolio</a>
+              <a href="https://www.linkedin.com/in/joey-decroix/" target="_blank" rel="noreferrer" data-i18n="footer.linkedIn">LinkedIn</a>
+              <a href="mailto:joeydecroix.pro@gmail.com" data-i18n="footer.contact">Contact</a>
             </nav>
 
             <div class="footer-signature ms-auto">
               <div class="footer-signature-line" aria-hidden="true"></div>
-              <p class="footer-signature-kicker mb-0">Created by</p>
+              <p class="footer-signature-kicker mb-0" data-i18n="footer.createdBy">Created by</p>
               <p class="footer-signature-name mb-0">JOEY DECROIX</p>
               <div class="footer-signature-line footer-signature-line-bottom" aria-hidden="true"></div>
             </div>
@@ -190,9 +217,9 @@
           <div class="footer-meta-wrap mt-auto">
             <div class="footer-meta-line" aria-hidden="true"></div>
             <div class="footer-meta d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
-              <span>Copyright©JDX-2026</span>
-              <span>Haute-Savoie, France</span>
-              <span>07:24:12 AM</span>
+              <span data-i18n="footer.copyright">Copyright JDX - 2026</span>
+              <span data-i18n="footer.location">Haute-Savoie, France</span>
+              <span data-local-time>--:--:--</span>
             </div>
             <div class="footer-meta-line footer-meta-line-bottom" aria-hidden="true"></div>
           </div>
