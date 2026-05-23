@@ -1,5 +1,27 @@
 import * as THREE from "three";
 
+// Couleurs du footer liquid gradient : modifie ces valeurs pour changer le rendu.
+const FOOTER_LIQUID_COLORS = {
+  base: "#000000",
+  coral: "#000000",
+  pink: "#ff000d",
+  violet: "#670e0e",
+  deepPurple: "#ff0000",
+  peach: "#654434",
+  electricPurple: "#000000",
+  touchGlow: "#ffffff",
+};
+
+const hexToVector3 = (hex) => {
+  const color = new THREE.Color(hex);
+  return new THREE.Vector3(color.r, color.g, color.b);
+};
+
+const hexToRgbString = (hex) => {
+  const color = new THREE.Color(hex);
+  return `${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}`;
+};
+
 class TouchTexture {
   constructor() {
     this.size = 96;
@@ -91,7 +113,7 @@ class TouchTexture {
     this.ctx.shadowOffsetX = offset;
     this.ctx.shadowOffsetY = offset;
     this.ctx.shadowBlur = this.radius * 1.25;
-    this.ctx.shadowColor = `rgba(255, 84, 149, ${0.22 * intensity})`;
+    this.ctx.shadowColor = `rgba(${hexToRgbString(FOOTER_LIQUID_COLORS.touchGlow)}, ${0.22 * intensity})`;
 
     this.ctx.beginPath();
     this.ctx.fillStyle = "rgba(255, 255, 255, 1)";
@@ -126,13 +148,13 @@ export function initFooterLiquidGradient() {
     uTime: { value: 0 },
     uResolution: { value: new THREE.Vector2(1, 1) },
     uTouchTexture: { value: touchTexture.texture },
-    uColor1: { value: new THREE.Vector3(1.0, 0.56, 0.53) },
-    uColor2: { value: new THREE.Vector3(0.99, 0.42, 0.58) },
-    uColor3: { value: new THREE.Vector3(0.64, 0.2, 1.0) },
-    uColor4: { value: new THREE.Vector3(0.21, 0.08, 0.45) },
-    uColor5: { value: new THREE.Vector3(1.0, 0.75, 0.62) },
-    uColor6: { value: new THREE.Vector3(0.38, 0.13, 0.97) },
-    uBase: { value: new THREE.Vector3(0.15, 0.04, 0.23) },
+    uColor1: { value: hexToVector3(FOOTER_LIQUID_COLORS.coral) },
+    uColor2: { value: hexToVector3(FOOTER_LIQUID_COLORS.pink) },
+    uColor3: { value: hexToVector3(FOOTER_LIQUID_COLORS.violet) },
+    uColor4: { value: hexToVector3(FOOTER_LIQUID_COLORS.deepPurple) },
+    uColor5: { value: hexToVector3(FOOTER_LIQUID_COLORS.peach) },
+    uColor6: { value: hexToVector3(FOOTER_LIQUID_COLORS.electricPurple) },
+    uBase: { value: hexToVector3(FOOTER_LIQUID_COLORS.base) },
   };
 
   const material = new THREE.ShaderMaterial({

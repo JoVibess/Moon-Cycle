@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  
+  <path d="M 342.98,449.39 A 220,220 0 1,1 397.21,413.49" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="4.5" 
+        stroke-linecap="butt" />
+        
+  <polygon points="385.32,424.20 401.22,417.95 393.19,409.03" 
+           fill="#ffffff" />
+</svg>

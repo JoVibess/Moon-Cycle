@@ -6,8 +6,16 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import SunCalc from "suncalc";
 import { initHeroMoonData } from "./features/heroMoonData.js";
 import { initFooterLiquidGradient } from "./features/footerLiquidGradient.js";
+import { initFooterLocalTime } from "./features/footerLocalTime.js";
+import { initLanguageSwitcher } from "./features/languageSwitcher.js";
+import { initMoonCycleDiagram } from "./features/moonCycleDiagram.js";
+import { initSiteCursor } from "./features/siteCursor.js";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const activeLanguage = initLanguageSwitcher({
+  onLanguageChange: initHeroMoonData,
+});
 
 // Scroll horizontal : convertit le scroll vertical en déplacement horizontal du track
 const wrap = document.querySelector(".horizontal-wrap");
@@ -28,6 +36,7 @@ if (wrap && track && spacer && panels.length > 1) {
     x: () => -distance(),
     ease: "none",
     scrollTrigger: {
+      id: "horizontal-scroll",
       trigger: wrap,
       start: "top top",
       end: () => `+=${distance()}`,
@@ -146,5 +155,8 @@ if (moonCanvas && moonContainer) {
 }
 
 // Récupère les données lunaires depuis l'API et met à jour le DOM
-initHeroMoonData();
+initHeroMoonData(activeLanguage);
 initFooterLiquidGradient();
+initFooterLocalTime();
+initMoonCycleDiagram();
+initSiteCursor();
