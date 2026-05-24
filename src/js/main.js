@@ -24,41 +24,55 @@ const spacer = document.querySelector(".horizontal-after-spacer");
 const panels = gsap.utils.toArray(".horizontal-track .panel");
 
 if (wrap && track && spacer && panels.length > 1) {
-  const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+  const horizontalScrollMedia = gsap.matchMedia();
 
-  const syncSpacerHeight = () => {
-    spacer.style.height = `${distance()}px`;
-  };
+  horizontalScrollMedia.add("(min-width: 768px)", () => {
+    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
 
-  syncSpacerHeight();
+    const syncSpacerHeight = () => {
+      spacer.style.height = `${distance()}px`;
+    };
 
-  gsap.to(track, {
-    x: () => -distance(),
-    ease: "none",
-    scrollTrigger: {
-      id: "horizontal-scroll",
-      trigger: wrap,
-      start: "top top",
-      end: () => `+=${distance()}`,
-      scrub: 1,
-      invalidateOnRefresh: true,
-      snap: {
-        snapTo: 1 / (panels.length - 1),
-        duration: { min: 0.2, max: 0.45 },
-        delay: 0.05,
-        directional: true,
-        ease: "power2.out",
-      },
-    },
-  });
-
-  window.addEventListener("resize", () => {
     syncSpacerHeight();
-    ScrollTrigger.refresh();
-  });
 
-  ScrollTrigger.addEventListener("refreshInit", syncSpacerHeight);
-  ScrollTrigger.refresh();
+    const horizontalTween = gsap.to(track, {
+      x: () => -distance(),
+      ease: "none",
+      scrollTrigger: {
+        id: "horizontal-scroll",
+        trigger: wrap,
+        start: "top top",
+        end: () => `+=${distance()}`,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1 / (panels.length - 1),
+          duration: { min: 0.2, max: 0.45 },
+          delay: 0.05,
+          directional: true,
+          ease: "power2.out",
+        },
+      },
+    });
+
+    const handleResize = () => {
+      syncSpacerHeight();
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    ScrollTrigger.addEventListener("refreshInit", syncSpacerHeight);
+    ScrollTrigger.refresh();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      ScrollTrigger.removeEventListener("refreshInit", syncSpacerHeight);
+      horizontalTween.kill();
+      spacer.style.height = "0px";
+      gsap.set(track, { clearProps: "transform" });
+      ScrollTrigger.refresh();
+    };
+  });
 }
 
 // Scène Three.js : rendu 3D du modèle lunaire

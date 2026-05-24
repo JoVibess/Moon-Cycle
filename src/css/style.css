@@ -127,6 +127,72 @@ a:hover {
   height: 0;
 }
 
+@media (max-width: 767px) {
+  .horizontal-wrap,
+  .horizontal-sticky,
+  .horizontal-track,
+  .panel {
+    width: 100%;
+  }
+
+  .horizontal-sticky {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .horizontal-track {
+    display: block;
+    height: auto;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .horizontal-track .panel {
+    flex: none;
+    height: auto;
+    min-height: 0;
+  }
+
+  .horizontal-track .panel > .h-100,
+  .panel-footer .h-100,
+  .hero-panel,
+  .hero-core {
+    height: auto !important;
+  }
+
+  .horizontal-track .panel:not(:first-child) .phase-header {
+    display: none !important;
+  }
+
+  .panel {
+    padding: 0;
+  }
+
+  .panel-phase,
+  .panel-tides {
+    padding-block: 2.5rem;
+  }
+
+  .phase-body-wrap {
+    align-items: stretch !important;
+  }
+
+  .phase-left,
+  .phase-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .phase-desc {
+    text-align: left;
+  }
+
+  .horizontal-after-spacer {
+    display: none;
+  }
+}
+
 .panel::before {
   content: "";
   position: absolute;
@@ -301,6 +367,57 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+  .hero-panel {
+    min-height: 0;
+  }
+
+  .hero-panel .hero-top {
+    gap: 1rem;
+  }
+
+  .hero-panel .hero-menu {
+    gap: 0.35rem !important;
+  }
+
+  .hero-panel .hero-menu a {
+    min-height: 2rem;
+    padding: 0.35rem 0.25rem;
+    font-size: 0.72rem;
+  }
+
+  .hero-panel .hero-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 0 2.25rem;
+  }
+
+  .hero-panel .hero-data,
+  .hero-panel .hero-datetext-center {
+    position: static;
+    width: 100%;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .hero-panel .hero-datetext-center {
+    margin-top: 2rem;
+  }
+
+  .hero-panel .hero-data {
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-timeline {
+    height: 4.5rem;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero-timeline-end {
+    top: 72%;
+  }
+
   .footer-arrow {
     font-size: 2.4rem;
   }
@@ -700,11 +817,13 @@ a:hover {
   position: relative;
   width: min(100%, 40rem);
   aspect-ratio: 1;
+  --moon-orbit-inset: 12%;
+  --moon-orbit-diagonal-offset: 26.8701%;
 }
 
 .moon-cycle-diagram__orbit {
   position: absolute;
-  inset: 12%;
+  inset: var(--moon-orbit-inset);
   border: 2px dashed var(--c-red);
   border-radius: 50%;
 }
@@ -732,43 +851,43 @@ a:hover {
 }
 
 .moon-cycle-diagram__moon--1 {
-  --moon-left: 13%;
+  --moon-left: var(--moon-orbit-inset);
   --moon-top: 50%;
 }
 
 .moon-cycle-diagram__moon--2 {
-  --moon-left: 23%;
-  --moon-top: 23%;
+  --moon-left: calc(50% - var(--moon-orbit-diagonal-offset));
+  --moon-top: calc(50% - var(--moon-orbit-diagonal-offset));
 }
 
 .moon-cycle-diagram__moon--3 {
   --moon-left: 50%;
-  --moon-top: 10%;
+  --moon-top: var(--moon-orbit-inset);
 }
 
 .moon-cycle-diagram__moon--4 {
-  --moon-left: 77%;
-  --moon-top: 23%;
+  --moon-left: calc(50% + var(--moon-orbit-diagonal-offset));
+  --moon-top: calc(50% - var(--moon-orbit-diagonal-offset));
 }
 
 .moon-cycle-diagram__moon--5 {
-  --moon-left: 88%;
+  --moon-left: calc(100% - var(--moon-orbit-inset));
   --moon-top: 50%;
 }
 
 .moon-cycle-diagram__moon--6 {
-  --moon-left: 77%;
-  --moon-top: 77%;
+  --moon-left: calc(50% + var(--moon-orbit-diagonal-offset));
+  --moon-top: calc(50% + var(--moon-orbit-diagonal-offset));
 }
 
 .moon-cycle-diagram__moon--7 {
   --moon-left: 50%;
-  --moon-top: 90%;
+  --moon-top: calc(100% - var(--moon-orbit-inset));
 }
 
 .moon-cycle-diagram__moon--8 {
-  --moon-left: 23%;
-  --moon-top: 77%;
+  --moon-left: calc(50% - var(--moon-orbit-diagonal-offset));
+  --moon-top: calc(50% + var(--moon-orbit-diagonal-offset));
 }
 
 @media (max-width: 1024px) {
@@ -811,5 +930,95 @@ a:hover {
     width: min(82vw, 30rem);
     max-width: 30rem;
     aspect-ratio: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .horizontal-track .panel > .container-fluid,
+  .panel-footer-content {
+    min-height: 0;
+  }
+
+  .panel-phase,
+  .panel-tides,
+  .panel-footer {
+    height: auto;
+    min-height: 0;
+  }
+
+  .panel-footer {
+    min-height: 100svh;
+  }
+
+  .panel-footer-content,
+  .panel-footer .footer-shell {
+    min-height: 100svh;
+  }
+
+  .panel-phase .container-fluid,
+  .panel-tides .container-fluid {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .phase-body-wrap {
+    align-items: stretch !important;
+    gap: 1.75rem !important;
+  }
+
+  .phase-title-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .phase-desc {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .phase-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .phase-visual--tides,
+  .phase-visual--cycle {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-panel .hero-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 0 2.25rem;
+  }
+
+  .hero-panel .hero-stage .hero-core {
+    order: 1;
+  }
+
+  .hero-panel .hero-stage .hero-datetext-center,
+  .hero-panel .hero-stage .hero-data {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    order: 2;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    align-self: stretch;
+  }
+
+  .hero-panel .hero-stage .hero-datetext-center {
+    margin-top: 2rem;
+  }
+
+  .hero-panel .hero-stage .hero-data {
+    order: 3;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
   }
 }

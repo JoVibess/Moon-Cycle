@@ -16,6 +16,7 @@ const syncPhaseTitleLines = () => {
 const wrap   = document.querySelector(".horizontal-wrap");
 const track  = document.querySelector(".horizontal-track");
 const panels = Array.from(document.querySelectorAll(".horizontal-track .panel"));
+const isMobileLayout = () => window.matchMedia("(max-width: 767px)").matches;
 
 const scrollToPanel = (target) => {
     if (target === "footer") {
@@ -24,6 +25,10 @@ const scrollToPanel = (target) => {
     }
     const panelIndex = parseInt(target, 10);
     if (isNaN(panelIndex) || !wrap || !track) return;
+    if (isMobileLayout()) {
+      panels[panelIndex]?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
     const totalDistance = Math.max(0, track.scrollWidth - window.innerWidth);
     const ratio = panels.length > 1 ? panelIndex / (panels.length - 1) : 0;
     const targetY = wrap.getBoundingClientRect().top + window.scrollY + ratio * totalDistance;
