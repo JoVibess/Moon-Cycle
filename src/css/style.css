@@ -45,6 +45,48 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body.is-loading {
+  overflow: hidden;
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(217, 4, 22, 0.16), transparent 38%),
+    linear-gradient(180deg, #07080c 0%, #020307 100%);
+  color: var(--text-light);
+  transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+.loader-overlay.loader-overlay--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-overlay__content {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  text-transform: uppercase;
+}
+
+.loader-overlay__label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+}
+
+.loader-overlay__progress {
+  font-family: "MoonWalk";
+  font-size: clamp(4.2rem, 12vw, 8rem);
+  line-height: 0.9;
+}
+
 @media (pointer: fine) {
   body,
   body * {
@@ -502,6 +544,13 @@ a:hover {
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 0;
+        transform: scale(0.96);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .hero-moon-wrap.is-ready {
+        opacity: 1;
+        transform: scale(1);
     }
     .hero-moon-canvas {
         width: 100%;
@@ -813,81 +862,10 @@ a:hover {
   border: 0;
 }
 
-.moon-cycle-diagram {
-  position: relative;
-  width: min(100%, 40rem);
-  aspect-ratio: 1;
-  --moon-orbit-inset: 12%;
-  --moon-orbit-diagonal-offset: 26.8701%;
-}
-
-.moon-cycle-diagram__orbit {
-  position: absolute;
-  inset: var(--moon-orbit-inset);
-  border: 2px dashed var(--c-red);
-  border-radius: 50%;
-}
-
-.moon-cycle-diagram__center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 36%;
-  height: auto;
-  aspect-ratio: 1;
-  display: block;
-  transform: translate(-50%, -50%);
-}
-
-.moon-cycle-diagram__moon {
-  position: absolute;
-  left: var(--moon-left);
-  top: var(--moon-top);
-  width: 18%;
+.moon-cycle-image {
+  width: min(100%, 30rem);
   height: auto;
   display: block;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.moon-cycle-diagram__moon--1 {
-  --moon-left: var(--moon-orbit-inset);
-  --moon-top: 50%;
-}
-
-.moon-cycle-diagram__moon--2 {
-  --moon-left: calc(50% - var(--moon-orbit-diagonal-offset));
-  --moon-top: calc(50% - var(--moon-orbit-diagonal-offset));
-}
-
-.moon-cycle-diagram__moon--3 {
-  --moon-left: 50%;
-  --moon-top: var(--moon-orbit-inset);
-}
-
-.moon-cycle-diagram__moon--4 {
-  --moon-left: calc(50% + var(--moon-orbit-diagonal-offset));
-  --moon-top: calc(50% - var(--moon-orbit-diagonal-offset));
-}
-
-.moon-cycle-diagram__moon--5 {
-  --moon-left: calc(100% - var(--moon-orbit-inset));
-  --moon-top: 50%;
-}
-
-.moon-cycle-diagram__moon--6 {
-  --moon-left: calc(50% + var(--moon-orbit-diagonal-offset));
-  --moon-top: calc(50% + var(--moon-orbit-diagonal-offset));
-}
-
-.moon-cycle-diagram__moon--7 {
-  --moon-left: 50%;
-  --moon-top: calc(100% - var(--moon-orbit-inset));
-}
-
-.moon-cycle-diagram__moon--8 {
-  --moon-left: calc(50% - var(--moon-orbit-diagonal-offset));
-  --moon-top: calc(50% + var(--moon-orbit-diagonal-offset));
 }
 
 @media (max-width: 1024px) {

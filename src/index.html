@@ -18,7 +18,14 @@
   <meta name="twitter:title" content="Moon Cycle | Live Lunar Phase, Moon Distance and Tides">
   <meta name="twitter:description" content="Explore the current moon phase, lunar illumination, distance from Earth, upcoming full moon and the influence of the Moon on ocean tides.">
 </head>
-<body>
+<body class="is-loading">
+  <div class="loader-overlay" data-loader-overlay role="status" aria-live="polite">
+    <div class="loader-overlay__content">
+      <span class="loader-overlay__label">Loading moon cycle</span>
+      <span class="loader-overlay__progress" data-loader-progress>0%</span>
+    </div>
+  </div>
+
   <div class="site-cursor" aria-hidden="true" data-site-cursor>
     <span class="site-cursor__dot"></span>
   </div>
@@ -117,18 +124,7 @@
 
                 <div class="phase-right d-flex align-items-center justify-content-center">
                   <div class="phase-visual phase-visual--cycle" aria-label="Lunar phase illustration placeholder" data-i18n-aria-label="sections.lunarVisualLabel">
-                    <div class="moon-cycle-diagram" aria-hidden="true">
-                      <div class="moon-cycle-diagram__orbit"></div>
-                      <img src="./assets/images/boucle.svg" alt="" class="moon-cycle-diagram__center">
-                      <img src="./assets/images/moon-1.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--1">
-                      <img src="./assets/images/moon-2.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--2">
-                      <img src="./assets/images/moon-3.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--3">
-                      <img src="./assets/images/moon-4.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--4">
-                      <img src="./assets/images/moon-5.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--5">
-                      <img src="./assets/images/moon-6.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--6">
-                      <img src="./assets/images/moon-7.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--7">
-                      <img src="./assets/images/moon-8.png" alt="" class="moon-cycle-diagram__moon moon-cycle-diagram__moon--8">
-                    </div>
+                    <img src="./assets/images/moonCycle.webp" alt="" class="moon-cycle-image" aria-hidden="true">
                   </div>
                 </div>
 
@@ -176,7 +172,7 @@
 
                 <div class="phase-right d-flex align-items-center justify-content-center">
                   <div class="phase-visual phase-visual--tides" aria-label="Tides illustration placeholder" data-i18n-aria-label="sections.tidesVisualLabel">
-                    <img src="./assets/images/mooCycle_marrees.png" alt="">
+                    <img src="./assets/images/moonCycle_marrees.webp" alt="">
                   </div>
                 </div>
 
@@ -229,6 +225,5 @@
   </main>
 
   <script type="module" src="./js/main.js"></script>
-  <script type="module" src="./js/utils/littleAnimation.js"></script>
 </body>
 </html>

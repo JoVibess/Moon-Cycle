@@ -125,6 +125,7 @@ class TouchTexture {
 export function initFooterLiquidGradient() {
   const footer = document.querySelector(".panel-footer");
   const canvas = footer?.querySelector(".footer-liquid-canvas");
+  const isMobileDevice = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
 
   if (!footer || !canvas) {
     return;
@@ -132,12 +133,12 @@ export function initFooterLiquidGradient() {
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
-    antialias: true,
+    antialias: !isMobileDevice,
     alpha: true,
-    powerPreference: "high-performance",
+    powerPreference: isMobileDevice ? "default" : "high-performance",
   });
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileDevice ? 1 : 1.5));
   renderer.setClearAlpha(0);
 
   const scene = new THREE.Scene();
